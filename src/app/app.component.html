@@ -1,0 +1,14 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<header>
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd; color:#555">
+        <a class="navbar-brand" href="#">
+            <!--img src="{{Datauser.avatar}}" width="30" height="30" class="d-inline-block align-top" alt=""-->
+            {{Datauser.name}}
+        </a>
+        <a href="/userdetails">Users</a>
+        <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Cerrar sesión</button>
+    </nav>      
+</header>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

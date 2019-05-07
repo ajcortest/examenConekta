@@ -1,0 +1,66 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Correo</th>
+      <th>Ver</th>
+      <th>Editar</th>
+
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let pd of service.list | paginate:{itemsPerPage: 3, currentPage: pageActual}">
+          <td>{{pd.name}}</td>
+          <td>{{pd.email}}</td>
+          <td (click)="open(content,pd)"><a><i class="fas fa-address-card"></i></a></td>
+          <td (click)="populateForm(pd)"><a><i class="fas fa-edit"></i></a></td>
+        </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="pageActual = $event"></pagination-controls>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Información</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form autocomplete="off">
+        <div class="form-inline">
+            <div class="form-group mb-2">
+                <label>Nombre:</label>
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label>{{UserDetail.name}}</label>
+            </div>
+          </div>
+          <div class="form-inline">
+              <div class="form-group mb-2">
+                  <label>Email:</label>
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                  <label>{{UserDetail.email}}</label>
+              </div>
+          </div>
+          <div class="form-inline">
+              <div class="form-group mb-2">
+                  <label>Celular:</label>
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                  <label>{{UserDetail.phone}}</label>
+              </div>
+          </div>
+          <div class="form-inline">
+              <div class="form-group mb-2">
+                  <label>Website:</label>
+              </div>
+              <div class="form-group mx-sm-3 mb-2">
+                <label>{{UserDetail.website}}</label>
+              </div>
+          </div>
+    </form>
+  </div>
+</ng-template>
+
