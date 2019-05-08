@@ -38,5 +38,17 @@ export class UserDetailListComponent implements OnInit {
   populateForm(pd:UserDetail):void{ 
     this.service.formData = Object.assign({},pd);
   }
+  delete(pd) {
+    this.service.deletetUser(pd.id).subscribe(
+      (res:any)=>{
+        this.toastr.success('Eliminación correcta!','Registro Exitoso..');
+        this.service.refreshList();        
+      },
+      err => {
+        this.toastr.error('Error','registro fallido.');
+        console.log(err);
+      }
+    );
+  }
 
 }

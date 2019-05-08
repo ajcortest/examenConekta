@@ -14,7 +14,12 @@ export class UserDetailService {
   list : Users[];
 
   postUserDetail(formData:UserDetail){
-    return this.http.post(this.BaseURI + "/users", formData)
+    if(formData.id == 0){
+      return this.http.post(this.BaseURI + "/users", formData)
+    }
+    else{
+      return this.http.put(this.BaseURI + "/users/"+formData.id, formData)
+    }
   }
   refreshList(){
     this.http.get(this.BaseURI + "/users")
@@ -25,5 +30,8 @@ export class UserDetailService {
   }
   getUser(id){
     return this.http.get(this.BaseURI + "/users/"+ id)
+  }
+  deletetUser(id){
+    return this.http.delete(this.BaseURI + "/users/"+ id)
   }
 }

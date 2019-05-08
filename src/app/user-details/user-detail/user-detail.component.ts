@@ -30,7 +30,7 @@ export class UserDetailComponent implements OnInit {
     this.service.postUserDetail(form.value).subscribe(
       res=>{
         this.resetForm(form);
-        this.toastr.success('Usuario Creado!','Registro Exitoso.');
+        this.toastr.success('Registro Exitoso.');
       },
       err=>{
         console.log(err);
@@ -38,5 +38,4 @@ export class UserDetailComponent implements OnInit {
       }
     )
   }
-
 }
